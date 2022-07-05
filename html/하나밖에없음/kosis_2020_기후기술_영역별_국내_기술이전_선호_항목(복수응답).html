@@ -59,54 +59,43 @@ function dataFormatter(obj) {
   return obj;
 }
 // 합계소계, 감축 소계, 감축 비재생에너지, 감축 재생에너지, 감축 신에너지, 감축 에너지저장, 감축 송재번 및 에너지관리, 감축 에너지수요, 감축 온실가스 고정, 적응 소계, 적응 농업축산, 적응 물관리, 적응 예측모니터링, 적응 해양수산연안, 적응 건강, 적응 산림육상, 감축및 적응 소계, 감축및 적응 감축 및 적응 융복합
-// 합계
-dataMap.dataTotal = dataFormatter({
-    2020: [2296, 1876, 20, 515, 58, 246, 135, 883, 19, 354, 160, 158, 11, 8, 18, 0, 66, 66],
+// 사례수
+dataMap.data1 = dataFormatter({
+    2020: [7604, 6012, 78, 2064, 148, 464, 424, 2790, 45, 1432, 533, 721, 27, 58, 48, 45, 159, 159],
     
 });
-// 아시아태평양
-dataMap.dataArea1 = dataFormatter({
-    2020: [2517, 2070, 28, 638, 79, 229, 154, 923, 19, 392, 156, 165, 18, 15, 38, 0, 56, 56],
-
-    
-});
-// 서유럽
-dataMap.dataArea2 = dataFormatter({
-    2020: [206, 179, 2, 38, 22, 17, 45, 51, 3, 26, 10, 8, 2, 0, 5, 0, 2, 2],
+// 기술양도
+dataMap.data2 = dataFormatter({
+    2020: [2008, 1666, 1, 555, 112, 81, 268, 649, 0, 301, 70, 204, 1, 1, 4, 21, 41, 41],
 
     
 });
-// 동유럽
-dataMap.dataArea3 = dataFormatter({
-    2020: [190, 160, 5, 15, 15, 21, 25, 79, 0, 29, 19, 11, 0, 0, 0, 0, 0, 0],
+// 무상양도
+dataMap.data3 = dataFormatter({
+    2020: [4960, 3845, 66, 1040, 96, 332, 305, 1972, 35, 1010, 396, 486, 17, 53, 22, 35, 105, 105],
 
     
 });
-// 북미
-dataMap.dataArea4 = dataFormatter({
-    2020: [563, 471, 2, 116, 28, 73, 40, 207, 5, 72, 45, 15, 3, 1, 7, 0, 20, 20],
+// 유상기술
+dataMap.data4 = dataFormatter({
+    2020: [1415, 1102, 17, 360, 22, 125, 38, 526, 13, 290, 65, 137, 17, 34, 33, 3, 23, 23],
 
     
 });
+// 무상기술
+dataMap.data5 = dataFormatter({
+    2020: [2192, 1735, 0, 587, 18, 151, 45, 932, 0, 426, 164, 250, 0, 6, 0, 7, 31, 31],
 
-// 중남미
-dataMap.dataArea5 = dataFormatter({
-    2020: [84, 49, 0, 8, 9, 6, 0, 26, 0, 25, 5, 10, 0, 3, 7, 0, 10, 10],
-
-    
-});
-
-// 중동아프리카
-dataMap.dataArea6 = dataFormatter({
-    2020: [126, 99, 6, 15, 5, 9, 9, 47, 8, 24, 2, 18, 2, 0, 2, 0, 3, 3],
     
 });
 
 // 기타
-dataMap.dataEtc = dataFormatter({
-    2020: [317, 237, 0, 30, 3, 57, 2, 146, 0, 70, 45, 25, 0, 0, 0, 0, 10, 10],
+dataMap.data6 = dataFormatter({
+    2020: [21, 13, 0, 7, 0, 0, 0, 6, 0, 5, 5, 0, 0, 0, 0, 0, 4, 4],
+
     
 });
+
 
 option = {
   baseOption: {
@@ -135,7 +124,7 @@ option = {
     tooltip: {},
     legend: {
       left: 'right',
-      data: ['합계', '아시아태평양', '서유럽', '동유럽', '북미', '중남미', '중동아프리카', '기타'],
+      data: ['사례수','기술양도','무상양도','유상기술','무상기술','기타'],
     },
     calculable: true,
     grid: {
@@ -184,46 +173,28 @@ option = {
     yAxis: [
       {
         type: 'value',
-        name: '(단위: 개소）'
+        name: '(단위: 건）'
       }
     ],
     series: [
-      { name: '합계', type: 'bar' },
-      { name: '아시아태평양', type: 'bar' },
-      { name: '서유럽', type: 'bar' },
-      { name: '동유럽', type: 'bar' },
-      { name: '북미', type: 'bar' },
-      { name: '중남미', type: 'bar' },
-      { name: '중동아프리카', type: 'bar' },
+      { name: '사례수', type: 'bar' },
+      { name: '기술양도', type: 'bar' },
+      { name: '무상양도', type: 'bar' },
+      { name: '유상기술', type: 'bar' },
+      { name: '무상기술', type: 'bar' },
       { name: '기타', type: 'bar' },
-      {
-        name: '대분류별 비율 ',
-        type: 'pie',
-        center: ['75%', '35%'],
-        radius: '28%',
-        z: 100
-      }
     ]
   },
   options: [
     {
-      title: { text: '2020 기후기술 영역별 해외진출지역(복수응답)' },
+      title: { text: '2020 기후기술 영역별 국내 기술이전 선호 항목(복수응답)' },
       series: [
-        { data: dataMap.dataTotal['2020'] },
-        { data: dataMap.dataArea1['2020'] },
-        { data: dataMap.dataArea2['2020'] },
-        { data: dataMap.dataArea3['2020'] },
-        { data: dataMap.dataArea4['2020'] },
-        { data: dataMap.dataArea5['2020'] },
-        { data: dataMap.dataArea6['2020'] },
-        { data: dataMap.dataEtc['2020'] },
-        {
-          data: [
-            { name: '감축', value: dataMap.dataTotal['2020'][1].value },
-            { name: '적응', value: dataMap.dataTotal['2020'][9].value  },
-            { name: '감축 및 적응', value: dataMap.dataTotal['2020'][16].value }
-          ]
-        }
+        { data: dataMap.data1['2020'] },
+        { data: dataMap.data2['2020'] },
+        { data: dataMap.data3['2020'] },
+        { data: dataMap.data4['2020'] },
+        { data: dataMap.data5['2020'] },
+        { data: dataMap.data6['2020'] },
       ]
     },
   ]
